@@ -12,6 +12,7 @@ with open(join(dirname(__file__), 'yhttp_devutils', '__init__.py')) as v_file:
 
 dependencies = [
     'pytest',
+    'redis',
     'yhttp',
     'yhttp-pony',
 ]

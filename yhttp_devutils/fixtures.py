@@ -74,6 +74,9 @@ def redis():
             self.info = kw
             self.maindict = dict()
 
+        def flushdb(self):
+            self.maindict.clear()
+
         def srem(self, key, member):
             set_ = self.maindict.setdefault(key, set())
             if member in set_:
@@ -101,8 +104,13 @@ def redis():
                 return 1
             return 0
 
-        def flushdb(self):
-            self.maindict.clear()
+        def hset(self, key, field, value):
+            hashtable = self.maindict.setdefault(key, {})
+            hashtable[field] = value
+
+        def hget(self, key, field, value):
+            hashtable = self.maindict.setdefault(key, {})
+            return hashtable[field]
 
     with patch('redis.Redis', new=RedisMock) as p:
         yield p

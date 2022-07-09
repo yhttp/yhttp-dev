@@ -45,9 +45,10 @@ def mockupfs():
 
 @pytest.fixture
 def freshdb():
-    host = 'localhost'
-    user = 'postgres'
-    password = 'postgres'
+    host = os.environ.get('YHTTPDEV_DB_HOST', 'localhost')
+    user = os.environ.get('YHTTPDEV_DB_USER', 'postgres')
+    password = os.environ.get('YHTTPDEV_DB_PASS', 'postgres')
+
     dbname = f'freshdb_{datetime.datetime.now():%Y%m%d%H%M%S}'
     dbmanager = ponyext.createdbmanager(host, 'postgres', user, password)
     dbmanager.create(dbname, dropifexists=True)

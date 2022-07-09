@@ -2,6 +2,8 @@ PIP = pip
 TEST_DIR = tests
 PRJ = yhttp_devutils
 PYTEST_FLAGS = -v
+PYTHON = $(shell which python3)
+VENV = $(PYTHON) -m venv
 
 
 .PHONY: test
@@ -17,6 +19,11 @@ cover:
 .PHONY: lint
 lint:
 	flake8
+
+
+.PHONY: venv
+venv:
+	$(VENV) .venv
 
 
 .PHONY: env

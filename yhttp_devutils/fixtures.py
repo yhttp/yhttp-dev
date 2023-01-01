@@ -45,9 +45,15 @@ def mockupfs():
 
 @pytest.fixture
 def freshdb():
-    host = os.environ.get('YHTTPDEV_DB_HOST', 'localhost')
-    user = os.environ.get('YHTTPDEV_DB_USER', 'postgres')
-    password = os.environ.get('YHTTPDEV_DB_PASS', 'postgres')
+    """ Creates a fresh database for each test.
+
+    Default configuration is using peer authentication method on
+    Postgresql's Unix Domain Socket.
+    """
+
+    host = os.environ.get('YHTTPDEV_DB_HOST', '')
+    user = os.environ.get('YHTTPDEV_DB_USER', '')
+    password = os.environ.get('YHTTPDEV_DB_PASS', '')
 
     dbname = f'freshdb_{datetime.datetime.now():%Y%m%d%H%M%S}'
     dbmanager = ponyext.createdbmanager(host, 'postgres', user, password)

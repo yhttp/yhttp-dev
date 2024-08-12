@@ -12,7 +12,7 @@ with open(join(dirname(__file__), 'yhttp_devutils', '__init__.py')) as v_file:
 
 dependencies = [
     'yhttp',
-    'yhttp-dbmanager >= 2.9',
+    'yhttp-dbmanager >= 3',
 ]
 
 

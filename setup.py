@@ -11,10 +11,8 @@ with open(join(dirname(__file__), 'yhttp_devutils', '__init__.py')) as v_file:
 
 
 dependencies = [
-    'pytest',
-    'redis',
     'yhttp',
-    'yhttp-pony',
+    'yhttp-dbmanager >= 2.9',
 ]
 
 
@@ -23,7 +21,7 @@ setup(
     version=package_version,
     packages=['yhttp_devutils'],
     install_requires=dependencies,
-    url='https://github.com/yhttp/devutils',
+    url='https://github.com/yhttp/yhttp-devutils',
     author='pylover',
     author_email='vahid.mardani@gmail.com',
 )

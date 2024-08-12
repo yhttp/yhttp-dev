@@ -6,7 +6,7 @@ import datetime
 from unittest.mock import patch
 
 import pytest
-from yhttp.ext import pony as ponyext
+from yhttp.ext.dbmanager import PostgresqlManager
 
 
 @pytest.fixture
@@ -56,7 +56,7 @@ def freshdb():
     password = os.environ.get('YHTTPDEV_DB_PASS', '')
 
     dbname = f'freshdb_{datetime.datetime.now():%Y%m%d%H%M%S}'
-    dbmanager = ponyext.createdbmanager(host, 'postgres', user, password)
+    dbmanager = PostgresqlManager(host, 'postgres', user, password)
     dbmanager.create(dbname, dropifexists=True)
     freshurl = f'postgres://{user}:{password}@{host}/{dbname}'
     yield freshurl

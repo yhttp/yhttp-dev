@@ -6,7 +6,6 @@ import datetime
 from unittest.mock import patch
 
 import pytest
-from yhttp.ext.dbmanager import PostgresqlManager
 
 
 @pytest.fixture
@@ -50,6 +49,7 @@ def freshdb():
     Default configuration is using peer authentication method on
     Postgresql's Unix Domain Socket.
     """
+    from yhttp.ext.dbmanager import PostgresqlManager
 
     host = os.environ.get('YHTTPDEV_DB_HOST', '')
     user = os.environ.get('YHTTPDEV_DB_USER', '')

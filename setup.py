@@ -10,10 +10,7 @@ with open(join(dirname(__file__), 'yhttp_devutils', '__init__.py')) as v_file:
         match(v_file.read()).group(1)
 
 
-dependencies = [
-    'yhttp',
-    'yhttp-dbmanager >= 3',
-]
+dependencies = []
 
 
 setup(

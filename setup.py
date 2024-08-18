@@ -20,6 +20,9 @@ setup(
     url='https://github.com/yhttp/yhttp-dev',
     author='pylover',
     author_email='vahid.mardani@gmail.com',
+    description='yhttp development utilities',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',  # This is important!
     packages=find_namespace_packages(
         where='.',
         include=['yhttp.dev'],

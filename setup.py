@@ -22,7 +22,7 @@ setup(
     author_email='vahid.mardani@gmail.com',
     packages=find_namespace_packages(
         where='.',
-        include=['yhttp'],
+        include=['yhttp.dev'],
         exclude=['tests'],
     )
 )

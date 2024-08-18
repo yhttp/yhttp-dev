@@ -1,4 +1,4 @@
-# yhttp-devutils
+# yhttp-dev
 
 A set of development and test fixtures for `yhttp` application development.
 
@@ -45,29 +45,6 @@ Install this project as editable mode and all other development dependencies:
 ```bash
 make env
 ```
-
-### Tests
-Execute all tests:
-```bash
-make test
-```
-
-Execute specific test(s) using wildcard:
-```bash
-make test F=tests/test_db*
-make test F=tests/test_form.py::test_querystringform
-```
-
-*refer to* [pytest documentation](https://docs.pytest.org/en/7.1.x/how-to/usage.html#how-to-invoke-pytest)
-*for more info about invoking tests.*
-
-Execute tests and report coverage result:
-```bash
-make cover
-make cover F=tests/test_static.py
-make cover-html
-```
-
 
 # Lint
 ```bash

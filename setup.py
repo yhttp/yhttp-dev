@@ -14,10 +14,10 @@ dependencies = []
 
 
 setup(
-    name='yhttp_devutils',
+    name='yhttp-dev',
     version=package_version,
     install_requires=dependencies,
-    url='https://github.com/yhttp/yhttp-devutils',
+    url='https://github.com/yhttp/yhttp-dev',
     author='pylover',
     author_email='vahid.mardani@gmail.com',
     packages=find_namespace_packages(

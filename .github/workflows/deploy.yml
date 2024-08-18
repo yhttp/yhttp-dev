@@ -12,9 +12,9 @@ jobs:
       PREFIX: /usr 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4.1.7
+      uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@5.1.1
+      uses: actions/setup-python@5
     - name: Install dependencies
       run: |
         git clone https://github.com/pylover/python-makelib.git make

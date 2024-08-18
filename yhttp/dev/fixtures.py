@@ -8,6 +8,16 @@ from unittest.mock import patch
 import pytest
 
 
+CICD = 'CI' in os.environ \
+    and os.environ['CI'] \
+    and 'GITHUB_RUN_ID' in os.environ
+
+
+@pytest.fixture
+def cicd():
+    return CICD
+
+
 @pytest.fixture
 def mockupfs():
     temp_directories = []

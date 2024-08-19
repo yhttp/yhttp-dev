@@ -68,7 +68,7 @@ def freshdb(cicd):
     dbname = f'freshdb_{datetime.datetime.now():%Y%m%d%H%M%S}'
     dbmanager = PostgresqlManager(host, 'postgres', user, pass_)
     dbmanager.create(dbname, dropifexists=True)
-    freshurl = f'postgres://{user}:{pass_}@{host}/{dbname}'
+    freshurl = f'postgresql://{user}:{pass_}@{host}/{dbname}'
     yield freshurl
     dbmanager.dropifexists(dbname)
 

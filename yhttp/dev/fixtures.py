@@ -129,5 +129,9 @@ def redis():
             hashtable = self.maindict.setdefault(key, {})
             return hashtable[field]
 
+        def close(self):
+            # Do nothing here, this methog is needed for just compatibiliy.
+            pass
+
     with patch('redis.Redis', new=RedisMock) as p:
         yield p

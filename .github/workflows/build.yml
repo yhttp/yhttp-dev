@@ -30,7 +30,7 @@ jobs:
     - name: Install dependencies
       run: |
         git clone https://github.com/pylover/python-makelib.git make
-        make env ENV=ci
+        make install-common editable-install
     - name: Lint
       run: make lint
 

@@ -3,6 +3,7 @@ import shutil
 import socket
 import tempfile
 import datetime
+import contextlib
 from unittest.mock import patch
 
 import pytest
@@ -135,3 +136,28 @@ def redis():
 
     with patch('redis.Redis', new=RedisMock) as p:
         yield p
+
+
+@pytest.fixture(scope='session')
+def htmlfile():
+    @contextlib.contextmanager
+    def create(filename, title, cssfile=None):
+        with open(filename, 'a') as file:
+            file.truncate(0)
+            file.write(
+                '<!DOCTYPE html>\n'
+                '<html lang="en">\n'
+                '<head>\n'
+                '<meta charset="utf-8" />\n'
+                f'<title>{title}</title>\n'
+            )
+
+            if cssfile:
+                file.write(f'<link rel="stylesheet" href="{cssfile}" '
+                           'type="text/css" />\n')
+
+            file.write('</head><body>\n')
+            yield file
+            file.write('</body></html>')
+
+    return create

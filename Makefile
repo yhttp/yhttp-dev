@@ -3,7 +3,7 @@ PKG_NAME = yhttp-dev
 
 
 # Assert the python-makelib version
-PYTHON_MAKELIB_VERSION_REQUIRED = 1.4.1
+PYTHON_MAKELIB_VERSION_REQUIRED = 1.5.5
 
 
 # Ensure the python-makelib is installed

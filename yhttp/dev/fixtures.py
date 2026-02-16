@@ -20,6 +20,13 @@ def cicd():
 
 
 @pytest.fixture
+def tempdir():
+    tdir = tempfile.mkdtemp()
+    yield tdir
+    shutil.rmtree(tdir)
+
+
+@pytest.fixture
 def mockupfs():
     temp_directories = []
 

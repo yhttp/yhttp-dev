@@ -1,4 +1,5 @@
 import os
+import sys
 import stat
 import shutil
 import socket
@@ -20,12 +21,8 @@ def bddcli_bootstrapper_patch(tempdir):
     @contextlib.contextmanager
     def patch(pycode):
         tmp = tempfile.mkdtemp()
-
-        venvdir = os.environ.get('VIRTUAL_ENV')
-        if venvdir is None:
-            raise ValueError('Tests must be run inside a virtual env')
-
-        bsfile = os.path.join(venvdir, 'bin', 'bddcli-bootstrapper')
+        bindir = os.path.dirname(sys.executable)
+        bsfile = os.path.join(bindir, 'bddcli-bootstrapper')
         assert os.path.exists(bsfile)
         newname = os.path.join(tempdir, 'backup')
         os.rename(bsfile, os.path.join(tempdir, 'backup'))

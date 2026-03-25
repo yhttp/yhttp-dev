@@ -41,10 +41,11 @@ def bddcli_bootstrapper_patch(tempdir):
             mode |= stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH
             os.fchmod(outfile.fileno(), stat.S_IMODE(mode))
 
-        yield
-
-        os.rename(newname, bsfile)
-        shutil.rmtree(tmp)
+        try:
+            yield
+        finally:
+            os.rename(newname, bsfile)
+            shutil.rmtree(tmp)
 
     return patch
 

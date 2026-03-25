@@ -1,9 +1,10 @@
+VENV_NAME = yhttp
 PKG_NAMESPACE = yhttp.dev
 PKG_NAME = yhttp-dev
 
 
 # Assert the python-makelib version
-PYTHON_MAKELIB_VERSION_REQUIRED = 1.5.5
+PYTHON_MAKELIB_VERSION_REQUIRED = 2.1
 
 
 # Ensure the python-makelib is installed

@@ -1,6 +1,4 @@
 import os
-import sys
-import stat
 import shutil
 import socket
 import tempfile
@@ -14,37 +12,6 @@ import pytest
 CICD = 'CI' in os.environ \
     and os.environ['CI'] \
     and 'GITHUB_RUN_ID' in os.environ
-
-
-@pytest.fixture
-def bddcli_bootstrapper_patch(tempdir):
-    @contextlib.contextmanager
-    def patch(pycode):
-        tmp = tempfile.mkdtemp()
-        bindir = os.path.dirname(sys.executable)
-        bsfile = os.path.join(bindir, 'bddcli-bootstrapper')
-        assert os.path.exists(bsfile)
-        newname = os.path.join(tempdir, 'backup')
-        os.rename(bsfile, os.path.join(tempdir, 'backup'))
-
-        with open(newname) as infile, open(bsfile, 'w') as outfile:
-            outfile.write(infile.readline())
-            outfile.write(infile.readline())
-            outfile.write(pycode)
-            outfile.write(infile.read())
-
-            # set the execution bit
-            mode = os.fstat(outfile.fileno()).st_mode
-            mode |= stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH
-            os.fchmod(outfile.fileno(), stat.S_IMODE(mode))
-
-        try:
-            yield
-        finally:
-            os.rename(newname, bsfile)
-            shutil.rmtree(tmp)
-
-    return patch
 
 
 @pytest.fixture

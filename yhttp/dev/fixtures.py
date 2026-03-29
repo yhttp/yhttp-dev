@@ -20,6 +20,18 @@ def cicd():
 
 
 @pytest.fixture
+def changedir():
+    @contextlib.contextmanager
+    def change(d):
+        backup = os.getcwd()
+        os.chdir(d)
+        yield
+        os.chdir(backup)
+
+    return change
+
+
+@pytest.fixture
 def tempdir():
     tdir = tempfile.mkdtemp()
     yield tdir

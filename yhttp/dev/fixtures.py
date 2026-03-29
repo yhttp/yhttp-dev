@@ -25,8 +25,10 @@ def changedir():
     def change(d):
         backup = os.getcwd()
         os.chdir(d)
-        yield
-        os.chdir(backup)
+        try:
+            yield
+        finally:
+            os.chdir(backup)
 
     return change
 

@@ -1,7 +1,8 @@
 VENV_NAME = yhttp
 PKG_NAMESPACE = yhttp.dev
 PKG_NAME = yhttp-dev
-
+PYDEPS_COMMON = \
+	'pytest-fixkit >= 1.0.3'
 
 # Assert the python-makelib version
 PYTHON_MAKELIB_VERSION_REQUIRED = 2.1

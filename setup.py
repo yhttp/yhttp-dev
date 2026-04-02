@@ -10,7 +10,9 @@ with open(join(dirname(__file__), 'yhttp/dev', '__init__.py')) as v_file:
         match(v_file.read()).group(1)
 
 
-dependencies = []
+dependencies = [
+    'pytest-fixkit >= 1.0.3',
+]
 
 
 setup(
